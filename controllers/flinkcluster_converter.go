@@ -693,6 +693,8 @@ func getDesiredJob(
 				Resources:       jobSpec.Resources,
 			},
 		},
+		NodeSelector:     jobSpec.NodeSelector,
+		Tolerations:      jobSpec.Tolerations,
 		RestartPolicy:    corev1.RestartPolicyNever,
 		Volumes:          volumes,
 		ImagePullSecrets: imageSpec.PullSecrets,

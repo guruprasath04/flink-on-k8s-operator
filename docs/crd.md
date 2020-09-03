@@ -70,6 +70,8 @@ FlinkCluster
         |__ volumes
         |__ volumeMounts
         |__ initContainers
+        |__ nodeSelector
+        |__ tolerations
         |__ restartPolicy
         |__ cleanupPolicy
             |__ afterJobSucceeds
@@ -245,9 +247,14 @@ FlinkCluster
       * **noLoggingToStdout** (optional): No logging output to STDOUT, default: false.
       * **initContainers** (optional): Init containers of the Job pod.
         See [more info](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/) about init containers.
+      * **nodeSelector** (optional): Selector which must match a node's labels for the job pod
+        to be scheduled on that node.
+        See [more info](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/)
+      * **tolerations** (optional): Allows the job pod to run on a tainted node
+        in the cluster.        
       * **volumes** (optional): Volumes in the Job pod.
         See [more info](https://kubernetes.io/docs/concepts/storage/volumes/) about volumes.
-      * **volumeMounts** (optional): Volume mounts in the Job containers. If there is no confilcts, these mounts will be
+      * **volumeMounts** (optional): Volume mounts in the Job containers. If there are no conflicts, these mounts will be
         automatically added to init containers; otherwise, the mounts defined in init containers will take precedence.
         See [more info](https://kubernetes.io/docs/concepts/storage/volumes/) about volume mounts.
       * **restartPolicy** (optional): Restart policy when the job fails, `enum("Never", "FromSavepointOnFailure")`,

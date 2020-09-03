@@ -286,6 +286,12 @@ type JobSpec struct {
 	// job from the savepoint recorded in the job status if available; otherwise,
 	// the job will stay in failed state. This option is usually used together
 	// with `autoSavepointSeconds` and `savepointsDir`.
+
+	// Selector which must match a node's labels for the job pod to be
+	// scheduled on that node.
+	// More info: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
+	NodeSelector map[string]string `json:"nodeSelector,omitempty"`
+
 	RestartPolicy *JobRestartPolicy `json:"restartPolicy"`
 
 	// The action to take after job finishes.
